@@ -1,0 +1,139 @@
+\documentclass[conference]{styles/acmsiggraph}
+
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi)
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text.
+%\usepackage{fullpage} % changes the margin
+\usepackage{enumitem} % for customizing enumerate tags
+\usepackage{amsmath,amsthm,thmtools, amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{etoolbox}   % for booleans and much more
+\usepackage{verbatim}   % for the comment environment
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyvrb}
+\usepackage{hyperref}
+\usepackage{menukeys}
+\usepackage{titlesec}
+\usepackage{pifont}
+\setlength{\parskip}{.8mm}
+
+\let\oldproofname=\proofname
+\renewcommand{\proofname}{\rm\bf{\oldproofname}}
+
+\declaretheorem[numbered = no, shaded={rulecolor=Gray,rulewidth=1pt, bgcolor={rgb}{0.9,0.9,0.9}}]{Theorem} %gray
+\declaretheorem[numbered = no, shaded={rulecolor=Red,rulewidth=1pt, bgcolor={rgb}{1,0.8,0.8}}]{Lemma}
+\declaretheorem[numbered = no, shaded={rulecolor=Green,rulewidth=1pt, bgcolor={rgb}{0.8,1,0.8}}]{Proposition}
+\declaretheorem[numbered = no, shaded={rulecolor=Blue,rulewidth=1pt, bgcolor={rgb}{0.8,0.8,1}}]{Corollary}
+\renewcommand{\qedsymbol}{\ensuremath{\includegraphics[width=0.25in, height=0.25in]{OIP.jpg}}}
+%if you want a legitimate QED symbol, here is \null\hfill\textcolor{green}{\ding{52}}
+
+\title{\huge Problem Set [Insert Number] \\ \LARGE {[Insert Class]}}
+\author{\Large Name \\ \textcolor{blue}{[insert]@caltech.edu}}
+\pdfauthor{Name}
+
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=magenta,
+	filecolor=magenta,
+	urlcolor=blue,
+}
+
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ %
+ label=\fbox{\color{Black}\textbf{OUTPUT}},
+ labelposition=topline,
+ %
+ commandchars=\|\(\), % escape character and argument delimiters for
+                      % commands within the verbatim
+ commentchar=*        % comment character
+}
+
+% convenient norm symbol
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\titlespacing*{\section}{0pt}{5.5ex plus 1ex minus .2ex}{2ex}
+\titlespacing*{\subsection}{0pt}{3ex}{2ex}
+
+\setcounter{secnumdepth}{4}	
+\renewcommand\theparagraph{\thesubsubsection.\arabic{paragraph}}	
+\newcommand\subsubsubsection{\paragraph}
+
+\setlength{\parskip}{0.5em}
+
+% a macro for hiding answers
+\newbool{hideanswers}
+\setbool{hideanswers}{false}
+\newenvironment{answer}{}{}
+\ifbool{hideanswers}{\AtBeginEnvironment{answer}{\comment} %
+\AtEndEnvironment{answer}{\endcomment}}{}
+
+\newcommand{\points}[1]{\hfill \normalfont{(\textit{#1 points})}}
+\newcommand{\pointsin}[1]{\normalfont{(\textit{#1 points})}}
+
+\begin{document}
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%
+%   Question #1  %
+%%%%%%%%%%%%%%%%%%
+\section*{Question 1 \points{[number of points]}}
+[Insert Problem Statement]
+%%%%%%%%%%%%%%%%%%
+%   Answer #1 
+%%%%%%%%%%%%%%%%%%
+
+\begin{answer}
+\rule{\textwidth}{0.4pt}
+	
+	\textbf{Discussion:} Insert any prefacing needed for the question, such as the approach for the proof or any preliminary work.
+	
+	\begin{proof} 
+	Write your actual proof here. The following boxes can be used to delineate theorems, lemmas, propositions, and corollaries respectively. Just replace the filler text with your actual verbiage. 
+	\begin{Theorem}
+	$\text{amogus}$
+	\end{Theorem}
+	%%%%%%%%%%%%%%%%%%%%
+	\begin{Lemma}
+	$\text{amogus}$
+	\end{Lemma}
+    %%%%%%%%%%%%%%%%%%%%	
+	\begin{Proposition}
+	$\text{amogus}$
+	\end{Proposition}
+    %%%%%%%%%%%%%%%%%%%%
+	\begin{Corollary}
+	$\text{amogus}$
+	\end{Corollary}
+	%%%%%%%%%%%%%%%%%%%%
+	Here are some shorthand "word" commands I made for some common math operations.
+	$$\cis \qquad \lcm \qquad \argmin \qquad \argmax \qquad \coker \qquad \Coker \qquad \dom \qquad \End \qquad \ext$$
+	$$\FixedPt \qquad \Gal \qquad \GL \qquad \Hom \qquad \Id \qquad \im \qquad \Ker \qquad \Mor \qquad \pred \qquad \pr$$
+	$$\rank \qquad \ran \qquad \Spec \qquad \Tr \qquad \Var \qquad \e{x} \qquad \p{x}$$
+	Here are some shorthand "function" commands I made.
+	$$\bij \qquad \inj \qquad \surj \qquad \bicond \qquad \cond \qquad \restrict{a,b} \qquad \from$$
+	Here are some geometry and calculus commands I made.
+	$$\dang \qquad \ray{AB} \qquad \seg{AB} \qquad x\dg \qquad \dydx \qquad \ddx$$
+	Here are some shorthand "matrix" commands I made.
+	$$\bm{1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9} \qquad \vm{1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9}$$
+	Here are some common set commands I made. 
+	$$\CC \qquad \EE \qquad \FF \qquad \NN \qquad \PP \qquad \QQ \qquad \RR \qquad \ZZ$$
+	Here are some summation and product commands I made.
+	$$\cycsum \qquad \symsum \qquad \cycprod \qquad \symprod$$
+	Here are some operational commands I made.
+	$$\ol{amogus} \qquad \ul{amogus} \qquad \ub{amogus} \qquad \ts{amogus} \qquad \mf{amogus} \qquad \tt{amogus}$$
+	$$\abs{x} \qquad \norm{x} \qquad \floor{x} \qquad \ceil{x} \qquad \del{x} \qquad \cbr{x} \qquad \sbr{x}$$
+	\qedhere
+    \end{proof}
+\rule{\textwidth}{0.4pt}
+\end{answer}
+
+
+\end{document}
